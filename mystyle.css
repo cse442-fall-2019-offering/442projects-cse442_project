@@ -45,3 +45,15 @@ address
   padding-top: 1em;
   border-top: thin dotted 
 }
+.product{
+	margin: auto;
+	margin-top: 50px;
+	width:50%;
+	border: 3px solid #73AD21;
+    padding: 10px;
+	text-align: center;
+}
+.image{
+	background-color: gray;
+	width: 100%;
+}
