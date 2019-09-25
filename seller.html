@@ -11,6 +11,16 @@
 <ul class="navbar">
   <br>
   <form action>
+   <pre>
+
+
+//Instructions
+1.Enter the key word (notebook, phone,etc)
+2.Choose the Catergory
+3.Click the search button
+4.search result will appear as the demo->
+5.if no result, Please click the button to
+ post your product</pre>
   <input type ="text" name="product" value="Search.."> <br> 
   <button type="submit"  onClick="refreshPage()">Search</button> <!--using refreshPage() in spring1, uplate later-->
   <form>
@@ -21,13 +31,15 @@
   <option value="Furniture">Furniture</option>
   </select>
   <li><a href="index.html">HomePage</a>
-  <li><a href="buyer.html">BuyerPage</a>
+      <p>Click to go back to HomePage</p>
+  <li><a href="buyer.html">BuyerPage</a> 
+  	<p>Click to go to Buyers' Page</p>
+  <li><a href="request.html">Click here to post your product</a>
 </ul>
 
 <!-- main context -->
 <h1>SellerPage</h1>
 
-<p>Welcome! you can sell and buy anything you want<p>
 <div class= "product">
 <h2>product 1 </h2>
 <div class = "image" style="height:100px;"> Image </div>
@@ -48,8 +60,10 @@
 <p>product description</p>
 <p>contact Information</p>
 </div>
+<p>//Choose the way you want to sort products</p>
+<p>Sort by
 <select name="Sort_by";>
-<option value ="Date">Date</option>
+<option value ="Time:newly listed">Time:newly listed</option>
 <option value ="Price from low to high">Price from low to high</option>
 <option value ="Price from high to low">Price from high to low</option>
 <!-- sign and date -->
