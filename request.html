@@ -1,19 +1,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UB_Trade</title>
+<link rel="stylesheet" href="w3.css">
 <link rel="stylesheet" href="mystyle.css">
 </head>
 
 <body>
 
 <!-- navigation bar -->
-<ul class="navbar">
-  <li><a href="index.html">Back to HomePage</a>
-  <li><a href="seller.html">Back to SellerPage</a>
-  <li><a href="buyer.html">Back to BuyerPage</a>
-  <li><a href="index.html">Click to submit</a>
- </ul>
+
+ <div class="w3-bar w3-light-grey">
+   <a href="index.html" class="w3-bar-item w3-button">HomePage</a> <!--link homepage -->
+   <a href="seller.html" class="w3-bar-item w3-button">SellerPage</a> <!--link seller page -->
+   <a href="request.html" class="w3-bar-item w3-button">Click here to post your request</a>
+   <div class="w3-dropdown-hover">
+     <button class="w3-button">Category</button>
+     <div class="w3-dropdown-content w3-bar-block w3-card-4">
+       <a href="#" class="w3-bar-item w3-button">House</a>
+       <a href="#" class="w3-bar-item w3-button">Car</a>
+       <a href="#" class="w3-bar-item w3-button">Furniture</a>
+     </div>
+   </div>
+   <input type="text" class="w3-bar-item w3-input" placeholder="Search..">
+   <button class="w3-bar-item w3-button" type="submit"  onClick="refreshPage()">Search</button>
+   </div>
 
 <!-- main context -->
 <h1>Product</h1>
