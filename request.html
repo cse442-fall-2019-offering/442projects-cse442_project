@@ -1,40 +1,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UB_Trade</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Page</title>
 <link rel="stylesheet" href="w3.css">
-<link rel="stylesheet" href="mystyle.css">
+<link rel="stylesheet" href="request.css">
+<h1>Product</h1>
+
+<p>Please fill in needed information and click submit button on the left side<p>
 </head>
 
 <body>
 
 <!-- navigation bar -->
 
+  <div class="w3-bar w3-light-grey">
+    <a href="index.html" class="w3-bar-item w3-button">HomePage</a> <!--link homepage -->
+    <a href="seller.html" class="w3-bar-item w3-button">SellerPage</a> <!--link seller page -->
+    <a href="request.html" class="w3-bar-item w3-button">Click here to post your request</a>
+    <div class="w3-dropdown-hover">
+      <button class="w3-button">Category</button>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="#" class="w3-bar-item w3-button">House</a>
+        <a href="#" class="w3-bar-item w3-button">Car</a>
+        <a href="#" class="w3-bar-item w3-button">Furniture</a>
+      </div>
+    </div>
+    <input type="text" class="w3-bar-item w3-input" placeholder="Search..">
+    <button class="w3-bar-item w3-button" type="submit"  onClick="refreshPage()">Search</button>
+    </div>
+
 
 <!-- main context -->
-<h1>Product</h1>
-
-<p>Please fill in needed information and click submit button on the left side<p>
-	
- <div class="w3-bar w3-light-grey">
-   <a href="index.html" class="w3-bar-item w3-button">HomePage</a> <!--link homepage -->
-   <a href="seller.html" class="w3-bar-item w3-button">SellerPage</a> <!--link seller page -->
-   <a href="request.html" class="w3-bar-item w3-button">Click here to post your request</a>
-   <div class="w3-dropdown-hover">
-     <button class="w3-button">Category</button>
-     <div class="w3-dropdown-content w3-bar-block w3-card-4">
-       <a href="#" class="w3-bar-item w3-button">House</a>
-       <a href="#" class="w3-bar-item w3-button">Car</a>
-       <a href="#" class="w3-bar-item w3-button">Furniture</a>
-     </div>
-   </div>
-   <input type="text" class="w3-bar-item w3-input" placeholder="Search..">
-   <button class="w3-bar-item w3-button" type="submit"  onClick="refreshPage()">Search</button>
-   </div>
-	
 <div class= "product">
-<h2>Your product </h2> <select type="type"; name="type"; value="type" >
+<h2>Your product </h2>
+<select type="type"; name="type"; value="type" >
 						<option value="type">Type</option>
 						<option value="House">House</option>
 						<option value="Car">Car</option>

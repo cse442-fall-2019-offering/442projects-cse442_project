@@ -1,0 +1,58 @@
+body
+{
+  font-family: Georgia, "Times New Roman",
+        Times, serif;
+  background-color: #FFE4C4
+}
+ul.navbar
+{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 2em;
+  left: 1em;
+  width: 9em
+}
+h1
+{
+  font-family: Helvetica, Geneva, Arial,
+        SunSans-Regular, sans-serif
+}
+ul.navbar li
+{
+  background: white;
+  margin: 0.5em 0;
+  padding: 0.3em;
+  border-right: 1em solid black
+}
+ul.navbar a
+{
+  text-decoration: none
+}
+a:link
+{
+  color: blue
+}
+a:hover
+{
+  color: red
+}
+address
+{
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: thin dotted
+}
+.product{
+	margin: auto;
+	margin-top: 50px;
+	width:50%;
+	border: 3px solid #73AD21;
+    padding: 10px;
+	text-align: center;
+}
+.image{
+	background-color: gray;
+	width: 100%;
+}
