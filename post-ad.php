@@ -27,7 +27,7 @@
 		<div class="container">
 			<div class="agile-its-header">
 				<div class="logo">
-					<h1><a href="index.html"><span>UB</span>TRADE</a></h1>
+					<h1><a href="index.php"><span>UB</span>TRADE</a></h1>
 				</div>
 
         <div class="agileits_search">
@@ -95,7 +95,7 @@
 			<div class="agileits-footer-bottom text-center">
 			<div class="container">
 				<div class="w3-footer-logo">
-					<h1><a href="index.html"><span>UB</span>TRADE</a></h1>
+					<h1><a href="index.php"><span>UB</span>TRADE</a></h1>
 				</div>
 				<div class="copyrights">
 					<p> Design by  <label> CSE_442_TEAM </label></p>
