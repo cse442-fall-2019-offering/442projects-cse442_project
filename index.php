@@ -67,13 +67,15 @@
   display all products in database to front site with its' information
   in section format-->
 								<?php
-                $query = "SELECT id, Product_Name, Price, release_date FROM product";
+                      $query = "SELECT * FROM product";
                 $result = mysqli_query($conn, $query);
                 while($row = mysqli_fetch_assoc($result)){
                   $id =$row['id'];
                   $Product_Name = $row['Product_Name'];
                   $Price = $row['Price'];
-                  $release_date = $row['release_date'];
+                  $Release_date = $row['Release_date'];
+                  $Image_location = $row['Image_location'];
+                  $Product_description = $row['Product_description'];
                     include 'single_product_section.php';
                 }
 
