@@ -1,8 +1,8 @@
 <?php
-	$HOST='tethys.cse.buffalo.edu';
-	$USERNAME='junlongy';
-	$PASSWORD='50192350';
-	$DATABASE='cse442_542_2019_fall_teamr_db';
+	$HOST='localhost';
+	$USERNAME='root';
+	$PASSWORD='';
+	$DATABASE='test';
 
 	error_reporting(E_ALL &~E_NOTICE &~E_DEPRECATED);
 
@@ -22,13 +22,22 @@
 	$email = $_POST['email'];
 	$phonenumber = $_POST['phonenumber'];
 	$dateline = time();
+	$dir= '/Users/junlongye/.bitnami/stackman/machines/xampp/volumes/root/htdocs/images/';
 
-	$insertsql = "INSERT INTO product(Product_Name,Price,Phone_number,Email,Release_date) VALUES('$productname','$price','$phonenumber','$email',$dateline)";
+	$image_target = $dir.$_FILES['image']['name'];
+	$image = $_FILES['image']['name'];
+		if (move_uploaded_file($_FILES['image']['tmp_name'],$image_target)) {
+			echo "upload to file image";
+	  }
+	  else {
+	    echo "problem with image";
+		}
+	$insertsql = "INSERT INTO products(Product_Name,Price,Email,Phone_number,Release_date,Image) VALUES('$productname','$price','$email','$phonenumber','$dateline','$image')";
 
 	if(mysqli_query($con,$insertsql)) {
 		echo "<script>alert('submit success'); window.location.href='post-ad.php'</script>";
 	} else {
-		echo "<script>alert('submit fail'); window.location.href='post-ad.php'</script>";
+		echo "<script>alert('submit fail'); </script>";
 	}
 
 	mysqli_close($con);
