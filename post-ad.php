@@ -14,7 +14,7 @@
 			<div class="w3ls-header-right">
 				<ul>
 					<li class="dropdown head-dpdn">
-						<a href="signin.html" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Sign In</a>
+						<a href="signin_front.php" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Sign In</a>
 					</li>
 					<li class="dropdown head-dpdn">
 						<a href="help.html"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
@@ -27,11 +27,11 @@
 		<div class="container">
 			<div class="agile-its-header">
 				<div class="logo">
-					<h1><a href="index.html"><span>UB</span>TRADE</a></h1>
+					<h1><a href="index.php"><span>UB</span>TRADE</a></h1>
 				</div>
 
         <div class="agileits_search">
-				<a class="post-w3layouts-ad" href="homepage.html">Back to Home page</a>
+				<a class="post-w3layouts-ad" href="index.php">Back to Home page</a>
 				</div>
 
 				<div class="clearfix"></div>
@@ -44,27 +44,23 @@
 		<div class="container">
 			<h2 class="w3-head">Post Your Product</h2>
 			<div class="post-ad-form">
-				<form method="post" action="post.handle.php">
+				<form enctype="multipart/form-data" method="post" action="post.handle.php">
 					<div class="clearfix"></div>
 					<label for="ProductName">Product Name</label>
 					<input type="text" id="ProductName" placeholder="Product Name" name="productname">
 					<div class="clearfix"></div>
 					<label>Ad Description <span>*</span></label>
-					<textarea class="mess" placeholder="Write few lines about your product"></textarea>
+					<input type="text" placeholder="Write few lines about your product" id = "description"></textarea>
 					<div class="clearfix"></div>
 				<div class="upload-ad-photos">
 				<label>Photos for your ad :</label>
 					<div class="photos-upload-view">
 
-						<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+						<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="5242880" />
 
 						<div>
-							<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+							<input type="file" id="fileselect" name="image" multiple="multiple" />
 							<div id="filedrag">or drop files here</div>
-						</div>
-
-						<div id="messages">
-						<p>Status Messages</p>
 						</div>
 						</div>
 					<div class="clearfix"></div>
@@ -95,7 +91,7 @@
 			<div class="agileits-footer-bottom text-center">
 			<div class="container">
 				<div class="w3-footer-logo">
-					<h1><a href="index.html"><span>UB</span>TRADE</a></h1>
+					<h1><a href="index.php"><span>UB</span>TRADE</a></h1>
 				</div>
 				<div class="copyrights">
 					<p> Design by  <label> CSE_442_TEAM </label></p>
