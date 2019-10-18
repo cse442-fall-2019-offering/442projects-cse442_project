@@ -14,7 +14,7 @@
 			<div class="w3ls-header-right">
 				<ul>
 					<li class="dropdown head-dpdn">
-						<a href="signin_front.php" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Sign In</a>
+						<a href="signin.html" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Sign In</a>
 					</li>
 					<li class="dropdown head-dpdn">
 						<a href="help.html"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
@@ -46,11 +46,11 @@
 			<div class="post-ad-form">
 				<form enctype="multipart/form-data" method="post" action="post.handle.php">
 					<div class="clearfix"></div>
-					<label for="ProductName">Product Name</label>
-					<input type="text" id="ProductName" placeholder="Product Name" name="productname">
+					<label for="ProductName">Product Name<span>*</span></label>
+					<input type="text" id="ProductName" placeholder="Enter Product Name" name="productname">
 					<div class="clearfix"></div>
-					<label>Ad Description <span>*</span></label>
-					<input type="text" placeholder="Write few lines about your product" id = "description"></textarea>
+					<label>Ad Description</label>
+					<input type="text" placeholder="Write a few lines about your product" id = "description"></textarea>
 					<div class="clearfix"></div>
 				<div class="upload-ad-photos">
 				<label>Photos for your ad :</label>
@@ -67,16 +67,18 @@
 						<script src="js/filedrag.js"></script>
 				</div>
 					<div class="personal-details">
-						<label for="Price">Price</label>
-						<input type="text" id="Price" placeholder="Price" name="price">
+						<label for="Price">Price<span>*</span></label>
+						<input type="text" id="Price" placeholder="Set a Price💰" name="price">
 						<div class="clearfix"></div>
-						<label for="Email" >Email</label>
-						<input type="text"  id="Email" placeholder="Email" name="email">
+						<label for="Email" >Email<span>*</span></label>
+						<input type="text"  id="Email" placeholder="example@domain.com" name="email">
 						<div class="clearfix"></div>
 						<label for="PhoneNumber">PhoneNumber</label>
-						<input type="text" id="PhoneNumber" placeholder="PhoneNumber" name="phonenumber">
+						<input type="text" id="PhoneNumber" placeholder="555-555-5555" name="phonenumber">
 						<div class="clearfix"></div>
-						<p class="post-terms">By clicking <strong>post Button</strong> you accept our <a href="terms.html" target="_blank">Terms of Use </a> and <a href="privacy.html" target="_blank">Privacy Policy</a></p>
+						<p class="post-terms">
+							<input type="checkbox" name="checkbox" value="check" id="agree" /> I have read and agree to the <a href="terms.html" target="_blank">Terms of Use </a> and <a href="privacy.html" target="_blank">Privacy Policy</a>
+						</p>
 					<input type="submit" value="Post">
 					<div class="clearfix"></div>
 					</form>
