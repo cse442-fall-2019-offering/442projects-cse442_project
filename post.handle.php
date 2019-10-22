@@ -1,14 +1,12 @@
 <?php
-	$HOST='tethys.cse.buffalo.edu';
-	$USERNAME='junlongy';
-	$PASSWORD='50192350';
-	$DATABASE='cse442_542_2019_fall_teamr_db';
+	session_start();
+	require_once('setting/server_config.php');
 
-	error_reporting(E_ALL &~E_NOTICE &~E_DEPRECATED);
-
-	if(!($con = mysqli_connect($HOST,$USERNAME,$PASSWORD,$DATABASE))) {
-		echo mysqli_error();
+	$un=$_SESSION['username'];
+	if(!isset($un)) {
+		echo "<script>alert('Please sign in first'); window.location.href='signin_front.php' </script>";
 	}
+
 	$required = array('productname','price','email');
 	//check if post are empty
 	foreach($required as $filed) {
@@ -24,6 +22,7 @@
 	$email = $_POST['email'];
 	$phonenumber = $_POST['phonenumber'];
 	$description = $_POST['description'];
+
 
 	//check for valid email
 	if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
@@ -41,7 +40,7 @@
 	if(!($_FILES['image']['size'] == 0)) {
 		//allowed file type
 		$type=array("jpg","gif","bmp","jpeg","png");
-		$max_file_size=2000000;
+		$max_file_size=5242880;
 		$name=explode(".",$_FILES['image']['name']);
 		//check valid file
 		if(!(in_array($name[1],$type))) {
@@ -63,14 +62,13 @@
 	}
 
 
+	$insertsql = "INSERT INTO product(Product_Name,Price,Email,Phone_number,Image,Product_description,User_name) VALUES('$productname','$price','$email','$phonenumber','$imagename','$description','$un')";
 
-	$insertsql = "INSERT INTO product(Product_Name,Price,Email,Phone_number,Image,Product_description) VALUES('$productname','$price','$email','$phonenumber','$imagename','$description')";
-
-	if(mysqli_query($con,$insertsql)) {
+	if(mysqli_query($conn,$insertsql)) {
 		echo "<script>alert('Submit success');window.location.href='post-ad.php'</script>";
 	} else {
-		echo "<script>alert('Submit fail');window.location.href='post-ad.php' </script>";
+		echo "<script>alert('Submit fail');window.location.href='post-ad.php'</script>";
 	}
 
-	mysqli_close($con);
+	mysqli_close($conn);
 ?>

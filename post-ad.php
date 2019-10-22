@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+ ?>
 <html>
 <head>
 <title>UB TRADE</title>
@@ -14,7 +17,18 @@
 			<div class="w3ls-header-right">
 				<ul>
 					<li class="dropdown head-dpdn">
-						<a href="signin.html" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Sign In</a>
+						<a href="<?php if (isset($_SESSION['username']))
+            {
+              $link_address = "manage.php";} else {
+                $link_address = "signin_front.php";
+              } echo $link_address;?>" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
+              <?php if (isset($_SESSION['username']))
+              {
+                echo $_SESSION['username'];
+              } else {
+                echo"Sign In";
+              }
+              ?></a>
 					</li>
 					<li class="dropdown head-dpdn">
 						<a href="help.html"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
@@ -50,7 +64,7 @@
 					<input type="text" id="ProductName" placeholder="Enter Product Name" name="productname">
 					<div class="clearfix"></div>
 					<label>Ad Description</label>
-					<input type="text" placeholder="Write a few lines about your product" id = "description"></textarea>
+					<input type="text" placeholder="Write a few lines about your product" name = "description"></textarea>
 					<div class="clearfix"></div>
 				<div class="upload-ad-photos">
 				<label>Photos for your ad :</label>
