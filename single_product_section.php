@@ -6,8 +6,9 @@
             <span Class="Product_description"><?php echo 	$Product_description ?> </span>
             <span class="adprice"> <?php  echo $Price ?> </span>
             </section>
-            <section class="list-right">
-              <form class="dele_form" method="GET" action="dele_post.php">
+            <section class="list-right">                    <!--only the user can delete post !-->
+              <form class="dele_form" method="GET" action= <?php if (isset($_SESSION['username'])){
+                echo"dele_post.php"; }?>>
                 <input type="hidden" name="Product_ID" value =<?php echo $Product_ID ?> >
                 <button>Delete</button>
               <span class="date"><?php echo $Release_date ?></span>
