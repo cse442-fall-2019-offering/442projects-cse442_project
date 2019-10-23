@@ -17,12 +17,18 @@ session_start();
 			<div class="w3ls-header-right">
 				<ul>
 					<li class="dropdown head-dpdn">
-						<a href="signin_front.php" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
-              <a>
+						<a href="<?php if (isset($_SESSION['username']))
+            {
+              $link_address = "manage.php";} else {
+                $link_address = "signin_front.php";
+              } echo $link_address;?>" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
               <?php if (isset($_SESSION['username']))
-          {
-          echo $_SESSION['username'];
-        } else echo"Sign In"?></a>
+              {
+                echo $_SESSION['username'];
+              } else {
+                echo"Sign In";
+              }
+              ?></a>
 					</li>
 					<li class="dropdown head-dpdn">
 						<a href="help.html"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
