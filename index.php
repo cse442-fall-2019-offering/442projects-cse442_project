@@ -79,6 +79,7 @@
   display all products in database to front site with its' information
   in section format-->
 								<?php
+
                 $query = "SELECT * FROM product ORDER BY Release_date DESC";
                 $result = mysqli_query($conn, $query);
                 while($row = mysqli_fetch_assoc($result)){
@@ -87,8 +88,10 @@
                   $Price = $row['Price'];
                   $Release_date = $row['Release_date'];
                   $Image_location = $row['Image_location'];
+
                   $Phone_number = $row['Phone_number'];
                   $Email = $row['Email'];
+
                   $Product_description = $row['Product_description'];
                     include 'single_product_section.php';
                 }
