@@ -11,6 +11,7 @@
                 echo"dele_post.php"; }?>>
                 <input type="hidden" name="Product_ID" value =<?php echo $Product_ID ?> >
                 <button>Delete</button>
+                  </form>
               <span class="date"><?php echo $Release_date ?></span>
               <br><span Class="Email"><?php echo $Email ?></span> <br>
               <span Class="contact_phone_number"> <?php echo $Phone_number ?></span>
