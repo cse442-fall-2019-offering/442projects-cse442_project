@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
-  require_once('setting/local_host_config.php');
-  session_start();
+  require_once('setting/server_config.php');
  ?>
 <html lang="en">
 <head>
@@ -14,19 +13,8 @@
 		<div class="w3ls-header"><!--header-one-->
 			<div class="w3ls-header-right">
 				<ul>
-          <!-- click to sign out account -->
-          <li class="dropdown head-dpdn">
-            <a href="setting/Sign_Out.php"><i aria-hidden="true"></i> Sign Out</a>
-          </li>
-          <!-- sign out end -->
 					<li class="dropdown head-dpdn">
-            <!-- replace login in by username when logined in !-->
-						<a href="signin_front.php" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
-              <?php if (isset($_SESSION['username']))
-    				{
-        		echo $_SESSION['username'];
-    			} else echo"Sign In"?> </a>
-          <!-- username display end !-->
+						<a href="signin.html" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Sign In</a>
 					</li>
 					<li class="dropdown head-dpdn">
 						<a href="help.html"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
@@ -79,8 +67,7 @@
   display all products in database to front site with its' information
   in section format-->
 								<?php
-
-                $query = "SELECT * FROM product ORDER BY Release_date DESC";
+                      $query = "SELECT * FROM product";
                 $result = mysqli_query($conn, $query);
                 while($row = mysqli_fetch_assoc($result)){
                   $id =$row['id'];
@@ -88,10 +75,6 @@
                   $Price = $row['Price'];
                   $Release_date = $row['Release_date'];
                   $Image_location = $row['Image_location'];
-
-                  $Phone_number = $row['Phone_number'];
-                  $Email = $row['Email'];
-
                   $Product_description = $row['Product_description'];
                     include 'single_product_section.php';
                 }
