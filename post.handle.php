@@ -2,6 +2,11 @@
 	session_start();
 	require_once('setting/server_config.php');
 
+	$un=$_SESSION['username'];
+	if(!isset($un)) {
+		echo "<script>alert('Please sign in first'); window.location.href='signin_front.php' </script>";
+	}
+
 	$required = array('productname','price','email');
 	//check if post are empty
 	foreach($required as $filed) {
@@ -17,6 +22,7 @@
 	$email = $_POST['email'];
 	$phonenumber = $_POST['phonenumber'];
 	$description = $_POST['description'];
+
 
 	//check for valid email
 	if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
@@ -34,7 +40,7 @@
 	if(!($_FILES['image']['size'] == 0)) {
 		//allowed file type
 		$type=array("jpg","gif","bmp","jpeg","png");
-		$max_file_size=2000000;
+		$max_file_size=5242880;
 		$name=explode(".",$_FILES['image']['name']);
 		//check valid file
 		if(!(in_array($name[1],$type))) {
@@ -56,7 +62,6 @@
 	}
 
 
-	$un=$_SESSION['username'];
 	$insertsql = "INSERT INTO product(Product_Name,Price,Email,Phone_number,Image,Product_description,User_name) VALUES('$productname','$price','$email','$phonenumber','$imagename','$description','$un')";
 
 	if(mysqli_query($conn,$insertsql)) {
