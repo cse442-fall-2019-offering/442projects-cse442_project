@@ -61,7 +61,7 @@ session_start();
 					<input type="text" id="ProductName" placeholder="Enter Product Name" name="productname" maxlength="25">
 					<div class="clearfix"></div>
 					<label>Ad Description</label>
-					<input type="text" placeholder="Write a few lines about your product" name = "description"></textarea>
+					<input type="text" placeholder="Write a few lines about your product" name = "description" maxlength = "50"></textarea>
 					<div class="clearfix"></div>
 				<div class="upload-ad-photos">
 				<label>Photos for your ad :</label>
