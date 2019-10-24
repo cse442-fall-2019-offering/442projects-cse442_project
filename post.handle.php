@@ -5,6 +5,7 @@
 	$un=$_SESSION['username'];
 	if(!isset($un)) {
 		echo "<script>alert('Please sign in first'); window.location.href='signin_front.php' </script>";
+		exit();
 	}
 
 	$required = array('productname','price','email');
@@ -27,23 +28,26 @@
 	//check for valid email
 	if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
 		echo "<script>alert('$email is not a valid email address'); window.location.href='post-ad.php' </script>";
+		exit();
 	}
 
 
 
 	//aggree our term of use
-	if(empty($_POST['checkbox'])){
-		echo "<script>alert('You must agree the Terms of Use and Privacy Policy'); window.location.href='post-ad.php' </script>";
-		exit();
-	}
+//	if(empty($_POST['checkbox'])){
+	//	echo "<script>alert('You must agree the Terms of Use and Privacy Policy'); window.location.href='post-ad.php' </script>";
+	//	exit();
+	//}
 	//if there is a file
 	if(!($_FILES['image']['size'] == 0)) {
 		//allowed file type
 		$type=array("jpg","gif","bmp","jpeg","png");
 		$max_file_size=5242880;
 		$name=explode(".",$_FILES['image']['name']);
+		$size = count($name)-1;
+
 		//check valid file
-		if(!(in_array($name[1],$type))) {
+		if(!(in_array($name[$size],$type))) {
 			echo "<script>alert('File type does not match, please slecte one of the following type: png, jpg, gif, bmp, jpeg'); window.location.href='post-ad.php' </script>";
 			exit();
 		}
@@ -51,7 +55,7 @@
 			echo "<script>alert('The photos you selected is too large, photos size upload limit is 2MB'); window.location.href='post-ad.php' </script>";
 			exit();
 		}
-		$imagename=date("YmdHis").$productname.'.'.$name[1];
+		$imagename=date("YmdHis").$un.'.'.$name[$size];
 		$image_target = "images/".$imagename;
 		$image = $_FILES['image']['name'];
 		//if photo upload success
@@ -62,13 +66,24 @@
 	}
 
 
+ $stmt = $conn -> prepare("INSERT INTO product(Product_Name,Price,Email,Phone_number,Image,Product_description,User_name) VALUES(?,?,?,?,?,?,?)");
+ $stmt -> bind_param("sssssss",$productname,$price,$email,$phonenumber,$imagename,$description,$un);
+ if (!$stmt->execute()) {
+	 echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+ }else{
+	 echo "<script>alert('submit success');  window.location.href='index.php'</script>";
+ }
+ $stmt -> close();
+
+	/*
 	$insertsql = "INSERT INTO product(Product_Name,Price,Email,Phone_number,Image,Product_description,User_name) VALUES('$productname','$price','$email','$phonenumber','$imagename','$description','$un')";
 
-	if(mysqli_query($conn,$insertsql)) {
-		echo "<script>alert('Submit success');window.location.href='post-ad.php'</script>";
-	} else {
-		echo "<script>alert('Submit fail');window.location.href='post-ad.php'</script>";
-	}
+		if(mysqli_query($conn,$insertsql)) {
+			echo "<script>alert('Submit success');window.location.href='index.php'</script>";
+		} else {
+			echo "<script>alert('Submit fail');window.location.href='post-ad.php'</script>";
+		}
+		*/
 
 	mysqli_close($conn);
 ?>
