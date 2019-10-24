@@ -8,7 +8,7 @@ session_start();
 <link rel="stylesheet" href="css/bootstrap.min.css"><!-- bootstrap-CSS -->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /><!-- style.css -->
 <link rel="stylesheet" href="css/font-awesome.min.css" /><!-- fontawesome-CSS -->
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<!-- header -->
@@ -29,9 +29,6 @@ session_start();
                 echo"Sign In";
               }
               ?></a>
-					</li>
-					<li class="dropdown head-dpdn">
-						<a href="help.html"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
 					</li>
 				</ul>
 			</div>
@@ -61,7 +58,7 @@ session_start();
 				<form enctype="multipart/form-data" method="post" action="post.handle.php">
 					<div class="clearfix"></div>
 					<label for="ProductName">Product Name<span>*</span></label>
-					<input type="text" id="ProductName" placeholder="Enter Product Name" name="productname">
+					<input type="text" id="ProductName" placeholder="Enter Product Name" name="productname" maxlength="25">
 					<div class="clearfix"></div>
 					<label>Ad Description</label>
 					<input type="text" placeholder="Write a few lines about your product" name = "description"></textarea>
@@ -82,17 +79,18 @@ session_start();
 				</div>
 					<div class="personal-details">
 						<label for="Price">Price<span>*</span></label>
-						<input type="text" id="Price" placeholder="Set a Price💰" name="price">
+						<input type="text" id="Price" placeholder="Set a Price💰" name="price" maxlength="10">
 						<div class="clearfix"></div>
 						<label for="Email" >Email<span>*</span></label>
-						<input type="text"  id="Email" placeholder="example@domain.com" name="email">
+						<input type="text"  id="Email" placeholder="example@domain.com" name="email" maxlength="35">
 						<div class="clearfix"></div>
 						<label for="PhoneNumber">PhoneNumber</label>
-						<input type="text" id="PhoneNumber" placeholder="555-555-5555" name="phonenumber">
+						<input type="text" id="PhoneNumber" placeholder="555-555-5555" name="phonenumber" >
 						<div class="clearfix"></div>
 						<p class="post-terms">
-							<input type="checkbox" name="checkbox" value="check" id="agree" /> I have read and agree to the <a href="terms.html" target="_blank">Terms of Use </a> and <a href="privacy.html" target="_blank">Privacy Policy</a>
-						</p>
+							<!--<input type="checkbox" name="checkbox" value="check" id="agree" /> I have read and agree to the <a href="terms.html" target="_blank">Terms of Use </a> and <a href="privacy.html" target="_blank">Privacy Policy</a>
+              -->
+          	</p>
 					<input type="submit" value="Post">
 					<div class="clearfix"></div>
 					</form>
