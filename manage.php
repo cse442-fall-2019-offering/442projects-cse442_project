@@ -3,12 +3,13 @@
   require_once('setting/server_config.php');
   session_start();
  ?>
-<html lang="en">
+<html>
 <head>
 <title>UB TRADE</title>
 <link rel="stylesheet" href="css/bootstrap.min.css"><!-- bootstrap-CSS -->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /><!-- style.css -->
 <link rel="stylesheet" href="css/font-awesome.min.css" /><!-- fontawesome-CSS -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 		<div class="w3ls-header"><!--header-one-->
@@ -21,16 +22,21 @@
           <!-- sign out end -->
 					<li class="dropdown head-dpdn">
             <!-- replace login in by username when logined in !-->
-						<a href="signin_front.php" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
+            <a href="<?php if (isset($_SESSION['username']))
+            {
+              $link_address = "manage.php";} else {
+                $link_address = "signin_front.php";
+              } echo $link_address;?>" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
               <?php if (isset($_SESSION['username']))
-    				{
-        		echo $_SESSION['username'];
-    			} else echo"Sign In"?> </a>
+              {
+                echo $_SESSION['username'];
+              } else {
+                echo"Sign In";
+              }
+              ?></a>
           <!-- username display end !-->
 					</li>
-					<li class="dropdown head-dpdn">
-						<a href="help.html"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
-					</li>
+
 					<li class="dropdown head-dpdn">
 						<div class="header-right">
 		</div>
@@ -48,7 +54,7 @@
 				</div>
 				<div class="agileits_search">
 
-				<a class="post-w3layouts-ad" href="post-ad.php">Post Your Product</a>
+				<a class="post-w3layouts-ad" href="index.php">Back to Home page</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -59,10 +65,9 @@
 	<div class="total-ads main-grid-border">
 		<div class="container">
 			<div class="select-box">
-
-
 				<div class="clearfix"></div>
 			</div>
+      <h2>Manage Your Posts</h2>
 
 			<div class="ads-grid">
 				<div class="agileinfo-ads-display col-md-9">
@@ -82,20 +87,19 @@
                   if (isset($_SESSION['username']))
       				        {
                           $un=$_SESSION['username'];
-                          echo 'User Name is : '.$un;
           		            $query = "SELECT * FROM product WHERE User_name = '".$un."' ORDER BY Release_date DESC";
                         } else echo "<script>alert('Please sign in frist'); window.location.href='index.php' </script>";
                 $result = mysqli_query($conn, $query);
                 while($row = mysqli_fetch_assoc($result)){
-                  $id =$row['id'];
                   $Product_Name = $row['Product_Name'];
                   $Price = $row['Price'];
                   $Release_date = $row['Release_date'];
                   $Image = $row['Image'];
                   $Phone_number = $row['Phone_number'];
                   $Email = $row['Email'];
-                  $Product_decrisption = $row['Product_description'];
-                    include 'single_product_section.php';
+                  $Product_ID = $row['id'];
+                  $Product_description = $row['Product_description'];
+                    include 'single_product_section_del.php';
                 }
 
 
@@ -106,13 +110,6 @@
 						</div>
 							</div>
 						</div>
-
-						<ul class="pagination pagination-sm">
-							<li><a href="#">Prev</a></li>
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">Next</a></li>
-						</ul>
 					  </div>
 					</div>
 				</div>
