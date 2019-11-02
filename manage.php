@@ -77,6 +77,24 @@
 						<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
 						   <div>
 												<div id="container">
+                          <div class="sort">
+                               <div class="sort-by">
+                                <label>Sort By : </label>
+                                <form method="GET">
+                                <select name = "orderby" onchange="this.form.submit()">       <!-- every time when select, pass the "order way" to get and refresh page with updated order way-->
+                                        <option hidden><?php if(isset($_GET['orderby'])){
+                                          if($_GET['orderby'] =="Release_date DESC" )  {echo "Most recent";}
+                                          else if ($_GET['orderby'] =="Price DESC" ) {echo "Price: High to Low";}
+                                          else if ($_GET['orderby'] =="Price ASC" ) {echo "Price: Low to High";}
+                                        } else echo"Most recent";
+                                        ?></option>
+                                        <option value="Release_date DESC">Most recent</option>
+                                        <option value="Price ASC">Price: Low to High</option>
+                                        <option value="Price DESC">Price: High to Low</option>
+                                </select>
+                              </form>
+                                 </div>
+                               </div>
 
 								<div class="clearfix"></div>
 							<ul class="list">
@@ -84,10 +102,13 @@
   display all products in database to front site with its' information
   in section format-->
 								<?php
+                if(isset($_GET['orderby'])){       //set the default order way to be "recent_upload"
+                $ordby = $_GET['orderby'];
+              } else { $ordby = "Release_date DESC"; }
                   if (isset($_SESSION['username']))
       				        {
                           $un=$_SESSION['username'];
-          		            $query = "SELECT * FROM product WHERE User_name = '".$un."' ORDER BY Release_date DESC";
+          		            $query = "SELECT * FROM product WHERE User_name = '".$un."' ORDER BY $ordby";
                         } else echo "<script>alert('Please sign in frist'); window.location.href='index.php' </script>";
                 $result = mysqli_query($conn, $query);
                 while($row = mysqli_fetch_assoc($result)){
