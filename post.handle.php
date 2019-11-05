@@ -8,7 +8,7 @@
 		exit();
 	}
 
-	$required = array('productname','price','email');
+	$required = array('productname','price','email','category');
 	//check if post are empty
 	foreach($required as $filed) {
 		if((empty($_POST[$filed]))) {
@@ -23,6 +23,7 @@
 	$email = $_POST['email'];
 	$phonenumber = $_POST['phonenumber'];
 	$description = $_POST['description'];
+	$category = $_POST['category'];
 
 
 	//check for valid email
@@ -66,8 +67,8 @@
 	}
 
 
- $stmt = $conn -> prepare("INSERT INTO product(Product_Name,Price,Email,Phone_number,Image,Product_description,User_name) VALUES(?,?,?,?,?,?,?)");
- $stmt -> bind_param("sssssss",$productname,$price,$email,$phonenumber,$imagename,$description,$un);
+ $stmt = $conn -> prepare("INSERT INTO product(Product_Name,Price,Email,Phone_number,Image,Product_description,User_name,Category) VALUES(?,?,?,?,?,?,?,?)");
+ $stmt -> bind_param("ssssssss",$productname,$price,$email,$phonenumber,$imagename,$description,$un,$category);
  if (!$stmt->execute()) {
 	 echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
  }else{
