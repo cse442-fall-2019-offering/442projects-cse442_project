@@ -73,8 +73,8 @@
 	<!-- //header -->
 
                   <?php
-                    $un=$_GET['id'];
-				$query = "SELECT * FROM product WHERE id = $un ";
+                $un=$_GET['id'];
+				$query = "SELECT * FROM product WHERE id = '$un' ";
                 $result = mysqli_query($conn, $query);
                 while($row = mysqli_fetch_assoc($result)){
                   $Product_Name = $row['Product_Name'];
@@ -99,8 +99,7 @@
 					<p> <i class="glyphicon glyphicon-map-marker"></i> Added at <?php echo $Release_date ?>, Product ID: <?php echo $Product_ID ?> </p>
 					<div class="flexslider">
 						<ul class="slides">
-							<li data-thumb="<?php echo $Image ?>">
-								<img src="<?php echo $Image ?>" />
+							  <img src=<?php echo "images/".$Image ?> title="" alt="" />
 							</li>
 						</ul>
 					</div>

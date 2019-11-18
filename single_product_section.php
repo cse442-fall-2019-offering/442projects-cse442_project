@@ -1,7 +1,7 @@
     <a>
         <li>
-  
-          <a href="big_post.php"> 
+
+          <a href="big_post.php?id=<?php echo $Product_ID ?>"> 
           <input type="hidden" name="Product_ID" value = <?php echo $Product_ID ?> />
           <img src=<?php echo "images/".$Image ?> title="" alt="" />
           <section class="list-left">
