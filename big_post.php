@@ -117,7 +117,7 @@
 					</script>
 					<!-- //FlexSlider -->
 
-		
+
 					<div class="product-details">
 						<h4><span class="w3layouts-agileinfo">Summary</span> :<p> <?php echo $Product_description ?> </p><div class="clearfix"></div></h4>
 
@@ -130,7 +130,7 @@
 							<h3 class="rate"> <?php echo "$".$Price ?> </h3>
 							<div class="clearfix"></div>
 						</div>
-					
+
 						<div class="itemtype">
 							<p class="p-price">Item Type</p>
 							<h4> <?php echo $Category ?> </h4>
@@ -139,7 +139,8 @@
 					</div>
 					<div class="interested text-center">
 						<h4>Interested in this Product?<small> Contact the Seller!</small></h4>
-						<p><i class="glyphicon glyphicon-earphone"></i> <?php echo $Phone_number ?>   <?php echo $Email ?> </p>
+						<p class=“phone_number”> Phone: <?php echo $Phone_number ?></p>
+            <p class="email">Email:  <?php echo $Email ?></p>
 					</div>
 
 				</div>

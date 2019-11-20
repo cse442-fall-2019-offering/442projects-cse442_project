@@ -7,7 +7,7 @@ test {
 </style>
 <a>
         <li>
-         <a href="big_post.php"> 
+          <a href="big_post.php?id=<?php echo $Product_ID ?>"> 
           <img src=<?php echo "images/".$Image ?> title="" alt="" />
           <section class="list-left">
             <h5 class="title"><?php echo $Product_Name ?></h5>
