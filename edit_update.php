@@ -77,6 +77,12 @@ $Image_Belong_id = $row['Image_Belong_id'];
 		$stmt -> bind_param("ss",$imagename, $Image_Belong_id);
 		$stmt->execute();
 	}
+	//handle the case when user make edit to post but not posting any new images.
+	$sql= "SELECT Name FROM Image WHERE Image_Belong_id =  '$Image_Belong_id'";
+	$result = mysqli_query($conn, $sql);
+	while($row = mysqli_fetch_assoc($result)){
+	$imagename = $row['Name'];
+	}
 
   $sql= "DELETE FROM product WHERE id= '$pid'";
   $result= $conn ->query($sql);
