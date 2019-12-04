@@ -95,7 +95,7 @@ session_start();
 					<input type="text" placeholder="<?php echo $Product_description ?>" name = "description" value= "<?php echo $Product_description?>" maxlength = "50"></textarea>
 					<div class="clearfix"></div>
 				<div class="upload-ad-photos">
-				<label>Photos for your Product :</label>
+				<label>Photos for your Product</label>
 					<div class="photos-upload-view">
 
 						<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="5242880" />
