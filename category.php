@@ -2,30 +2,33 @@
 <?php
   require_once('setting/server_config.php');
   session_start();
+  $cate=$_GET['categoryid'];
+
+  $sql_statement = "SELECT * FROM category WHERE category = $cate " ;
+  $result = mysqli_query($conn, $sql_statement);
+  if((mysqli_num_rows($result))==0){
+      echo "<script>alert('category does not exist'); window.location.href='index.php' </script>";
+  }
+
  ?>
-<html>
+
+<html lang="en">
 <head>
 <title>UB TRADE</title>
 <link rel="stylesheet" href="css/bootstrap.min.css"><!-- bootstrap-CSS -->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /><!-- style.css -->
 <link rel="stylesheet" href="css/font-awesome.min.css" /><!-- fontawesome-CSS -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 		<div class="w3ls-header"><!--header-one-->
 			<div class="w3ls-header-right">
 				<ul>
-          <!-- click to change password-->
-          <li class="dropdown head-dpdn">
-            <a href="alterpassword.php"><i aria-hidden="true"></i> Change Password </a>
-          </li>
-          <!-- change password end-->
           <!-- click to sign out account -->
           <li class="dropdown head-dpdn">
             <a href="setting/Sign_Out.php"><i aria-hidden="true"></i> Sign Out</a>
           </li>
           <!-- sign out end -->
-					<li class="dropdown head-dpdn">
+          <li class="dropdown head-dpdn">
             <!-- replace login in by username when logined in !-->
             <a href="<?php if (isset($_SESSION['username']))
             {
@@ -41,7 +44,6 @@
               ?></a>
           <!-- username display end !-->
 					</li>
-
 					<li class="dropdown head-dpdn">
 						<div class="header-right">
 		</div>
@@ -59,20 +61,32 @@
 				</div>
 				<div class="agileits_search">
 
-				<a class="post-w3layouts-ad" href="index.php">Back to Home page</a>
+				<a class="post-w3layouts-ad" href="post-ad.php">Post Your Product</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 		</div>
+
+    <div class="w3layouts-breadcrumbs text-center">
+  		<div class="container">
+  			<span class="agile-breadcrumbs">
+  			<a href="index.php"><i class="fa fa-home home_1"></i></a> /
+        <a href="category.php?categoryid='car'">Cars</a> /
+        <a href="category.php?categoryid='textbook'">Textbook</a> /
+        <a href="category.php?categoryid='furniture'">Furniture</a> /
+        <a href="category.php?categoryid='other'">Other</a> /
+  		</div>
+  	</div>
 
 
 	<!-- Products -->
 	<div class="total-ads main-grid-border">
 		<div class="container">
 			<div class="select-box">
+
+
 				<div class="clearfix"></div>
 			</div>
-      <h2>Manage Your Posts</h2>
 
 			<div class="ads-grid">
 				<div class="agileinfo-ads-display col-md-9">
@@ -103,6 +117,7 @@
 
 								<div class="clearfix"></div>
                 <br>
+              <div id ="allsection">
 							<ul class="list">
 <!--implementing display_method:
   display all products in database to front site with its' information
@@ -111,13 +126,15 @@
                 if(isset($_GET['orderby'])){       //set the default order way to be "recent_upload"
                 $ordby = $_GET['orderby'];
               } else { $ordby = "Release_date DESC"; }
-                  if (isset($_SESSION['username']))
-      				        {
-                          $un=$_SESSION['username'];
-          		            $query = "SELECT * FROM product WHERE User_name = '".$un."' ORDER BY $ordby";
-                        } else echo "<script>alert('Please sign in frist'); window.location.href='index.php' </script>";
+                $query = "SELECT * FROM product WHERE Category = $cate ORDER BY $ordby";;
                 $result = mysqli_query($conn, $query);
+
+                if((mysqli_num_rows($result))==0){
+              		echo "There is no post in this category";
+                }
+
                 while($row = mysqli_fetch_assoc($result)){
+                  $id =$row['id'];
                   $Product_Name = $row['Product_Name'];
                   $Price = $row['Price'];
                   $Release_date = $row['Release_date'];
@@ -126,14 +143,11 @@
                   $Email = $row['Email'];
                   $Product_ID = $row['id'];
                   $Product_description = $row['Product_description'];
-                    include 'single_product_section_del.php';
+                  include 'single_product_section.php';
                 }
-
-
-
-
                  ?>
 							</ul>
+            </div>
 						</div>
 							</div>
 						</div>
