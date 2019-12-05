@@ -33,6 +33,7 @@
 
 
 
+
 $Image_Belong_id = "";
 //get image_belong_id before we dele the previous post;
 $pid = $_POST['Product_ID'];
@@ -73,6 +74,7 @@ $Image_Belong_id = $row['Image_Belong_id'];
 			echo "<script>alert('Photo upload fail'); window.location.href='update.php' </script>";
 			exit();
 		}
+
 		$stmt = $conn -> prepare("INSERT INTO Image(Name, Image_Belong_id) VALUES(?, ?)");
 		$stmt -> bind_param("ss",$imagename, $Image_Belong_id);
 		$stmt->execute();
@@ -84,13 +86,16 @@ $Image_Belong_id = $row['Image_Belong_id'];
 	$imagename = $row['Name'];
 	}
 
+
   $sql= "DELETE FROM product WHERE id= '$pid'";
   $result= $conn ->query($sql);
   unset($_POST['Product_ID']);
 
 
+
 	$stmt = $conn -> prepare("INSERT INTO product(Product_Name,Price,Email,Phone_number, Image, Image_Belong_id, Product_description,User_name,Category) VALUES(?,?,?,?,?,?,?,?,?)");
   $stmt -> bind_param("sssssssss",$productname,$price,$email,$phonenumber, $imagename, $Image_Belong_id, $description,$un,$category);
+
  if (!$stmt->execute()) {
 	 echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
  }else{
