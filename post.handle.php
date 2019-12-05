@@ -75,8 +75,10 @@
 		}
 }
 
+
  $stmt = $conn -> prepare("INSERT INTO product(Product_Name,Price,Email,Phone_number, Image, Image_Belong_id, Product_description,User_name,Category) VALUES(?,?,?,?,?,?,?,?,?)");
  $stmt -> bind_param("sssssssss",$productname,$price,$email,$phonenumber, $imagename, $Image_Belong_id, $description,$un,$category);
+
  if (!$stmt->execute()) {
 	 echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
  }else{
