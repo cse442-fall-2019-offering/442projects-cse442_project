@@ -17,10 +17,13 @@ test {
               <br><span Class="Email"><?php echo $Email ?></span> <br>
               <span Class="contact_phone_number"> <?php echo $Phone_number ?></span>
             </section>
-                  </a>
-            <section class="list-right">
 
-            <button class="test" button onclick="location.href = 'update.php';" id="<?php echo $Product_ID ?> />" class="list-right" >Edit</button>
+            <section class="list-right">
+              <form class="edit_form" method="GET" action= <?php if (isset($_SESSION['username'])){
+                echo"update.php"; }?>>
+                <input type="hidden" name="Product_ID" value = <?php echo $Product_ID ?> />
+                <button>Edit</button>
+              </form>
 
                                 <!--only the user can delete post !-->
               <form class="dele_form" method="GET" action= <?php if (isset($_SESSION['username'])){
