@@ -59,9 +59,17 @@ session_start();
 					<div class="clearfix"></div>
 					<label for="ProductName">Product Name<span>*</span></label>
 					<input type="text" id="ProductName" placeholder="Enter Product Name" name="productname" maxlength="25">
+          <label for="Category">Category<span>*</span></label>
+          <select name = "category">
+            <option disabled selected value> -- select an option -- </option>
+            <option value = "car">Car</option>
+            <option value = "textbook">Textbook</option>
+            <option value = "furniture">Furniture</option>
+            <option value = "others">Others</option>
+          </select>
 					<div class="clearfix"></div>
 					<label>Ad Description</label>
-					<input type="text" placeholder="Write a few lines about your product" name = "description" maxlength = "50"></textarea>
+					<input type="text" placeholder="Write a few lines about your product" name = "description" maxlength="50"></textarea>
 					<div class="clearfix"></div>
 				<div class="upload-ad-photos">
 				<label>Photos for your ad :</label>
@@ -70,7 +78,7 @@ session_start();
 						<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="5242880" />
 
 						<div>
-							<input type="file" id="fileselect" name="image" multiple="multiple" />
+							<input type="file" id="fileselect" name="image[]" multiple="multiple" />
 							<div id="filedrag">or drop files here</div>
 						</div>
 						</div>
@@ -85,7 +93,7 @@ session_start();
 						<input type="text"  id="Email" placeholder="example@domain.com" name="email" maxlength="35">
 						<div class="clearfix"></div>
 						<label for="PhoneNumber">PhoneNumber</label>
-						<input type="text" id="PhoneNumber" placeholder="555-555-5555" name="phonenumber" >
+						<input type="text" id="PhoneNumber" placeholder="Please follow the pattern 555-555-5555" name="phonenumber" >
 						<div class="clearfix"></div>
 						<p class="post-terms">
 							<!--<input type="checkbox" name="checkbox" value="check" id="agree" /> I have read and agree to the <a href="terms.html" target="_blank">Terms of Use </a> and <a href="privacy.html" target="_blank">Privacy Policy</a>

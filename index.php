@@ -20,6 +20,7 @@
             <a href="setting/Sign_Out.php"><i aria-hidden="true"></i> Sign Out</a>
           </li>
           <!-- sign out end -->
+
 					<li class="dropdown head-dpdn">
             <!-- replace login in by username when logined in !-->
 						<a href="signin_front.php" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
@@ -31,6 +32,7 @@
 					</li>
 					<li class="dropdown head-dpdn">
 						<a href="help.html"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
+
 					</li>
 					<li class="dropdown head-dpdn">
 						<div class="header-right">
@@ -54,6 +56,17 @@
 				<div class="clearfix"></div>
 			</div>
 		</div>
+
+    <div class="w3layouts-breadcrumbs text-center">
+  		<div class="container">
+  			<span class="agile-breadcrumbs">
+          <a href="index.php"><i class="fa fa-home home_1"></i></a> /
+          <a href="category.php?categoryid='car'">Cars</a> /
+          <a href="category.php?categoryid='textbook'">Textbook</a> /
+          <a href="category.php?categoryid='furniture'">Furniture</a> /
+          <a href="category.php?categoryid='other'">Other</a>
+  		</div>
+  	</div>
 
 
 	<!-- Products -->
@@ -93,8 +106,10 @@
                                </div>
 
 								<div class="clearfix"></div>
+
               <div id ="allsection">
 							<ul class="list">
+                 
 <!--implementing display_method:
   display all products in database to front site with its' information
   in section format-->
@@ -115,21 +130,17 @@
                   $Product_ID = $row['id'];
                   $Product_description = $row['Product_description'];
                   include 'single_product_section.php';
+
                 }
 
+
                  ?>
+ 
 							</ul>
             </div>
 						</div>
 							</div>
 						</div>
-
-						<ul class="pagination pagination-sm">
-							<li><a href="#">Prev</a></li>
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">Next</a></li>
-						</ul>
 					  </div>
 					</div>
 				</div>

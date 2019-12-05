@@ -15,6 +15,11 @@
 		<div class="w3ls-header"><!--header-one-->
 			<div class="w3ls-header-right">
 				<ul>
+          <!-- click to change password-->
+          <li class="dropdown head-dpdn">
+            <a href="alterpassword.php"><i aria-hidden="true"></i> Change Password </a>
+          </li>
+          <!-- change password end-->
           <!-- click to sign out account -->
           <li class="dropdown head-dpdn">
             <a href="setting/Sign_Out.php"><i aria-hidden="true"></i> Sign Out</a>
@@ -97,6 +102,7 @@
                                </div>
 
 								<div class="clearfix"></div>
+                <br>
 							<ul class="list">
 <!--implementing display_method:
   display all products in database to front site with its' information
