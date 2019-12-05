@@ -33,6 +33,17 @@
 
 
 
+
+$Image_Belong_id = "";
+//get image_belong_id before we dele the previous post;
+$pid = $_POST['Product_ID'];
+$query= "SELECT Image_Belong_id FROM product WHERE id = '$pid'";
+$result = mysqli_query($conn, $query);
+while($row = mysqli_fetch_assoc($result)){
+$Image_Belong_id = $row['Image_Belong_id'];
+}
+
+
 	//aggree our term of use
 //	if(empty($_POST['checkbox'])){
 	//	echo "<script>alert('You must agree the Terms of Use and Privacy Policy'); window.location.href='update.php' </script>";
@@ -63,16 +74,28 @@
 			echo "<script>alert('Photo upload fail'); window.location.href='update.php' </script>";
 			exit();
 		}
+
+		$stmt = $conn -> prepare("INSERT INTO Image(Name, Image_Belong_id) VALUES(?, ?)");
+		$stmt -> bind_param("ss",$imagename, $Image_Belong_id);
+		$stmt->execute();
+	}
+	//handle the case when user make edit to post but not posting any new images.
+	$sql= "SELECT Name FROM Image WHERE Image_Belong_id =  '$Image_Belong_id'";
+	$result = mysqli_query($conn, $sql);
+	while($row = mysqli_fetch_assoc($result)){
+	$imagename = $row['Name'];
 	}
 
-      $pid = $_POST['Product_ID'];
+
   $sql= "DELETE FROM product WHERE id= '$pid'";
   $result= $conn ->query($sql);
   unset($_POST['Product_ID']);
 
 
- $stmt = $conn -> prepare("INSERT INTO product(Product_Name,Price,Email,Phone_number,Image,Product_description,User_name,Category) VALUES(?,?,?,?,?,?,?,?)");
- $stmt -> bind_param("ssssssss",$productname,$price,$email,$phonenumber,$imagename,$description,$un,$category);
+
+	$stmt = $conn -> prepare("INSERT INTO product(Product_Name,Price,Email,Phone_number, Image, Image_Belong_id, Product_description,User_name,Category) VALUES(?,?,?,?,?,?,?,?,?)");
+  $stmt -> bind_param("sssssssss",$productname,$price,$email,$phonenumber, $imagename, $Image_Belong_id, $description,$un,$category);
+
  if (!$stmt->execute()) {
 	 echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
  }else{

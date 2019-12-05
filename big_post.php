@@ -81,6 +81,9 @@
                   $Price = $row['Price'];
                   $Release_date = $row['Release_date'];
                   $Image = $row['Image'];
+
+                  $Image_Belong_id = $row['Image_Belong_id'];
+
                   $Phone_number = $row['Phone_number'];
                   $Email = $row['Email'];
                   $Product_ID = $row['id'];
@@ -99,8 +102,16 @@
 					<p> <i class="glyphicon glyphicon-map-marker"></i> Added at <?php echo $Release_date ?>, Product ID: <?php echo $Product_ID ?> </p>
 					<div class="flexslider">
 						<ul class="slides">
-							  <img src=<?php echo "images/".$Image ?> title="" alt="" />
-							</li>
+
+              <?php
+               $query = "SELECT Name FROM Image WHERE Image_Belong_id = '$Image_Belong_id' ";        //searching through image_table and find any image satisfied the image_belong_id;
+               $result = mysqli_query($conn, $query);
+               while($row = mysqli_fetch_assoc($result)){
+                 $Name = $row['Name'];
+                 include 'image_belong.php';
+                 }
+              ?>
+
 						</ul>
 					</div>
 					<!-- FlexSlider -->
