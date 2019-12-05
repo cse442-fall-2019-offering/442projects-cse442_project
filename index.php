@@ -20,21 +20,19 @@
             <a href="setting/Sign_Out.php"><i aria-hidden="true"></i> Sign Out</a>
           </li>
           <!-- sign out end -->
-          <li class="dropdown head-dpdn">
+
+					<li class="dropdown head-dpdn">
             <!-- replace login in by username when logined in !-->
-            <a href="<?php if (isset($_SESSION['username']))
-            {
-              $link_address = "manage.php";} else {
-                $link_address = "signin_front.php";
-              } echo $link_address;?>" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
+						<a href="signin_front.php" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
               <?php if (isset($_SESSION['username']))
-              {
-                echo $_SESSION['username'];
-              } else {
-                echo"Sign In";
-              }
-              ?></a>
+    				{
+        		echo $_SESSION['username'];
+    			} else echo"Sign In"?> </a>
           <!-- username display end !-->
+					</li>
+					<li class="dropdown head-dpdn">
+						<a href="help.html"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
+
 					</li>
 					<li class="dropdown head-dpdn">
 						<div class="header-right">
@@ -108,7 +106,7 @@
                                </div>
 
 								<div class="clearfix"></div>
-                <br>
+
               <div id ="allsection">
 							<ul class="list">
                  
@@ -134,6 +132,8 @@
                   include 'single_product_section.php';
 
                 }
+
+
                  ?>
  
 							</ul>
