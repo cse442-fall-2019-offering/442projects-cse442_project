@@ -40,11 +40,15 @@
 	//	exit();
 	//}
 	//if there is a file
-	if(!($_FILES['image']['size'] == 0)) {
+	$count = 0;
+	$Image_Belong_id = date("YmdHis").$un;
+	foreach ($_FILES["image"]["tmp_name"] as $key=>$temp_name) {
+		// code...
+	if(!($_FILES['image']['size'][$key] == 0)) {
 		//allowed file type
 		$type=array("jpg","gif","bmp","jpeg","png");
 		$max_file_size=5242880;
-		$name=explode(".",$_FILES['image']['name']);
+		$name=explode(".",$_FILES['image']['name'][$key]);
 		$size = count($name)-1;
 
 		//check valid file
@@ -52,23 +56,29 @@
 			echo "<script>alert('File type does not match, please slecte one of the following type: png, jpg, gif, bmp, jpeg'); window.location.href='post-ad.php' </script>";
 			exit();
 		}
-		if($max_file_size < $_FILES['image']['size']) {
+		if($max_file_size < $_FILES['image']['size'][$key]) {
 			echo "<script>alert('The photos you selected is too large, photos size upload limit is 2MB'); window.location.href='post-ad.php' </script>";
 			exit();
 		}
-		$imagename=date("YmdHis").$un.'.'.$name[$size];
+		$imagename=date("YmdHis").$un.$count.'.'.$name[$size];
 		$image_target = "images/".$imagename;
 		$image = $_FILES['image']['name'];
+		$count += 1;
 		//if photo upload success
-		if (!move_uploaded_file($_FILES['image']['tmp_name'],$image_target)) {
+		if (!move_uploaded_file($_FILES['image']['tmp_name'][$key],$image_target)) {
 			echo "<script>alert('Photo upload fail'); window.location.href='post-ad.php' </script>";
 			exit();
 		}
-	}
+		 $stmt = $conn -> prepare("INSERT INTO Image(Name, Image_Belong_id) VALUES(?, ?)");
+		 $stmt -> bind_param("ss",$imagename, $Image_Belong_id);
+		 $stmt->execute();
+		}
+}
 
 
- $stmt = $conn -> prepare("INSERT INTO product(Product_Name,Price,Email,Phone_number,Image,Product_description,User_name,Category) VALUES(?,?,?,?,?,?,?,?)");
- $stmt -> bind_param("ssssssss",$productname,$price,$email,$phonenumber,$imagename,$description,$un,$category);
+ $stmt = $conn -> prepare("INSERT INTO product(Product_Name,Price,Email,Phone_number, Image, Image_Belong_id, Product_description,User_name,Category) VALUES(?,?,?,?,?,?,?,?,?)");
+ $stmt -> bind_param("sssssssss",$productname,$price,$email,$phonenumber, $imagename, $Image_Belong_id, $description,$un,$category);
+
  if (!$stmt->execute()) {
 	 echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
  }else{

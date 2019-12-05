@@ -78,7 +78,7 @@ session_start();
 						<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="5242880" />
 
 						<div>
-							<input type="file" id="fileselect" name="image" multiple="multiple" />
+							<input type="file" id="fileselect" name="image[]" multiple="multiple" />
 							<div id="filedrag">or drop files here</div>
 						</div>
 						</div>
